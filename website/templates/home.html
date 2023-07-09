@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if user.is_authenticated %}
+    <h1>Bienvenido!</h1>
+
+  {% else %}
+
+    <div class="col-md-6 offset-md-3">
+    <h1>Iniciar Sesion</h1>
+    <br/>
+
+    <form method="POST" action="{% url 'home' %}">
+      {% csrf_token %}
+
+      <div class="form-floating">
+        <input type="text" class="form-control" id="id_username" name="username" placeholder="Nombre de Usuario" required>
+        <label for="id_username">Nombre de Usuario</label>
+      </div>
+      <br/>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="id_password" name="password" placeholder="Contraseña" required>
+        <label for="id_password">Contraseña</label>
+      </div>
+      <br/>
+      <button type="submit" class="btn btn-secondary">Iniciar Sesion</button>
+
+    </form>
+  {% endif %}
+{% endblock %}

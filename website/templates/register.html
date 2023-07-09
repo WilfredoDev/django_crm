@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="col-md-6 offset-md-3">
+	<h1>Crear una Cuenta</h1>
+	<br/>
+	<form action="{% url 'register' %}" method="POST">
+		{% csrf_token %}
+		<div class="form-floating">
+			<input type="text" class="form-control" id="id_username" name="username" placeholder="Nombre de Usuario" required>
+			<label for="id_username">Nombre de Usuario</label>
+		</div>
+		<br>
+		<div class="form-floating mb-3">
+			<input type="email" class="form-control" id="id_email" name="email" placeholder="nombre@ejemplo.com" required>
+			<label for="id_email">Correo electrónico</label>
+		</div>
+		<div class="form-floating">
+			<input type="password" class="form-control" id="id_password" name="password" placeholder="Contraseña" required>
+			<label for="id_password">Contraseña</label>
+		</div>
+		<br>
+		<button type="submit" class="btn btn-secondary">Registrarse</button>
+	</form>
+	
+{% endblock %}
