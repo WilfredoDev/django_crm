@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <br>
+    <h1>Informacion de {{single_record.first_name}}</h1>
+    <hr><hr>
+    <ol>
+        <li><b>Nombre completo:</b> {{single_record.first_name}} {{single_record.last_name}}</li>
+        <li><b>Correo electronico:</b> {{single_record.email}}</li>
+        <li><b>Direccion:</b> {{single_record.address}}</li>
+        <li><b>Numero telefonico:</b> {{single_record.phone}}</li>
+        <li><b>Ciudad:</b> {{single_record.city}}</li>
+        <li><b>Estado:</b> {{single_record.state}}</li>
+        <li><b>Codigo Zip:</b> {{single_record.zipcode}}</li>
+    </ol>
+    <hr>
+    <hr>
+    <br>
+    <a href="{% url 'home' %}" class="btn btn-secondary">Volver</a>
+    <a href="{% url 'delete_record' single_record.id %}" class="btn btn-danger">Borrar</a>
+    <a href="{% url 'update_record' single_record.id %}" class="btn btn-primary">Actualizar registro</a>
+{% endblock content %}  

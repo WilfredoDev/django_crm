@@ -2,8 +2,34 @@
 
 {% block content %}
   {% if user.is_authenticated %}
-    <h1>Bienvenido!</h1>
-
+    <h1>Records</h1>
+    <br>
+    <table class="table table-hover table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Direccion</th>
+          <th scope="col">Telefono</th>
+          <th scope="col">ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if records %}
+          {% for record in records %}
+            <tr>
+                <td>{{record.first_name}}</td>
+                <td>{{record.last_name}}</td>
+                <td>{{record.email}}</td>
+                <td>{{record.address}}</td>
+                <td>{{record.phone}}</td>
+                <td><a href="{% url 'single_record' record.id  %}">{{record.id}}</a></td>
+              </tr>
+          {% endfor %}
+        {% endif %}
+      </tbody>
+    </table>
   {% else %}
 
     <div class="col-md-6 offset-md-3">
